@@ -19,7 +19,7 @@ public class CalculatePower {
         return result;
     }
 }
-/* base squaring happens every iteration but it gets multiplied with result only if the LSB is set to 1.
+/* base squaring happens every iteration, but it gets multiplied with result only if the LSB is set to 1.
  base in this case starts with 3 -> 3^2 -> 3^4 -> 3^8 (3, 3^2, 3^2^2, 3^2^2^2...)*/
 /*6 = 110₂
 6 = (1 × 4) + (1 × 2) + (0 × 1)
