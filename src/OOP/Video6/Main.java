@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 //        BeforeGeneric bf = new BeforeGeneric();
-//        bf.add("Adi");
-//        bf.add("Sam");
-//        bf.add(8);
+//        bf.addFirst("Adi");
+//        bf.addFirst("Sam");
+//        bf.addFirst(8);
 //
 //        for (int i = 0; i < 3; i++) {
 //            Object o = bf.get(i); // no error, so why not do this instead of generics
@@ -15,11 +15,11 @@ public class Main {
 //        }
 
         ArrayList<Integer> list = new ArrayList<>();
-//        list.add(1);
-//        list.add(2);
-//        list.add(3);
-//        list.add(4);
-//        list.add(5);
+//        list.addFirst(1);
+//        list.addFirst(2);
+//        list.addFirst(3);
+//        list.addFirst(4);
+//        list.addFirst(5);
 //        list.set(4, 5);
 //        list.get(2);
 //        list.isEmpty();
@@ -27,12 +27,12 @@ public class Main {
 //        System.out.println(list);
 
 //        CustomArrayList list1 = new CustomArrayList();
-//        list1.add(1);
-//        list1.add(2);
-//        list1.add(3);
-//        list1.add(4);
-//        list1.add(5);
-//        list1.add(6);
+//        list1.addFirst(1);
+//        list1.addFirst(2);
+//        list1.addFirst(3);
+//        list1.addFirst(4);
+//        list1.addFirst(5);
+//        list1.addFirst(6);
 //        System.out.println(list1.get(1));
 //        System.out.println(list1.length());
 //        list1.remove();
