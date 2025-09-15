@@ -9,6 +9,37 @@ public class CustomLinkedList {
         size = 0;
     }
 
+    // It looks like a bad idea to return Node in public method and give direct access to node object
+    // so below is a another insertMethod using recursion, with better encapsulation.
+    /*public Node insert(int value, int index) {
+        if (index == 0) {
+            Node node = head;
+            head = new Node(value);
+            head.next = node;
+            size++;
+            return head;
+        }
+        Node temp = head;
+        head = head.next;
+        temp.next = insert(value, index - 1);
+        head = temp;
+        return head;
+    }*/
+
+    public void insert(int value, int index) {
+        head = recursionInsert(value, index, head);
+    }
+
+    private Node recursionInsert(int value, int index, Node node) {
+        if (index == 0) {
+            size++;
+            return new Node(value, node);
+        }
+        node.next = recursionInsert(value, index - 1, node.next);
+        return node;
+    }
+
+
     public void addFirst(int value) {
         if (head != null) {
             Node temp = head;
