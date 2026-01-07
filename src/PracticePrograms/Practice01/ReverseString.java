@@ -1,4 +1,4 @@
-package RoughWork.Practice01;
+package PracticePrograms.Practice01;
 
 public class ReverseString
 {

@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args) {
-        int[] nums = {9};
+        int[] nums = {1, 2};
         System.out.println(combinationSum4(nums, 3));
     }
 

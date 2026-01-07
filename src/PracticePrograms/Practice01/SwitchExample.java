@@ -1,4 +1,4 @@
-package RoughWork.Practice01;
+package PracticePrograms.Practice01;
 
 import java.util.Scanner;
 
