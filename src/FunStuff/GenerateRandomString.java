@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class GenerateRandomString {
     public static void main(String[] args) {
-        System.out.println(generateRandomString(5));
+        System.out.println(generateRandomString(50));
     }
 
     public static String generateRandomString(int size) {

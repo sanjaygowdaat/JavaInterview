@@ -139,6 +139,78 @@ public class BST {
         System.out.print(node.value + "-> ");
     }
 
+    // think about preOrder & postOrder flattening as well. this can be done via iteration using stack
+    // or morris traversal, or dfs recursion can be used too. below is the recursion solution
+    public void flattenInOrder()
+    {
+        Node flatListRoot = flattenInOrder(root, null);
+        display(flatListRoot, 0);
+    }
+
+    // this is very interesting case, so look deeply. to flatten inorder, we have to order it
+    // left -> node -> right. so in order to do this i go in the opposite order, that is, right -> node -> left.
+    // this is one of the case where, to get the solution, isolating part of the solution and seeing what to do to the original
+    // tree to modify the tree and get the desired result doesn't work. I have to look at the bigger picture
+    // and see the overall pattern i want in my answer and go in the reverse order to get the result
+
+    // i wasn't satisfied with my comment, so i asked chatgpt to refine my comment and give it a better structure and improve the explanation
+    // Goal: flatten the tree into a right-skewed linked list in inorder sequence.
+    // Inorder order is: left -> node -> right.
+    //
+    // Key idea:
+    // We build the list from the end toward the front.
+    // By traversing in reverse inorder (right -> node -> left),
+    // we always know the next node that should follow the current node
+    // in the final flattened list.
+    //
+    // Invariant:
+    // `successor` always points to the head of the already-flattened portion
+    // of the tree that comes *after* the current node in inorder traversal.
+    //
+    // At each step:
+    // 1. Flatten the right subtree first, obtaining its inorder successor.
+    // 2. Link the current node to that successor via `node.right`.
+    // 3. Make the current node the new successor.
+    // 4. Flatten the left subtree, passing the updated successor.
+    // 5. Nullify `node.left` to maintain a singly-linked structure.
+
+    private Node flattenInOrder(Node node, Node successor) {
+        if (node == null) {
+            return successor;
+        }
+        successor = flattenInOrder(node.right, successor);
+        node.right  = successor;
+        successor = node;
+        successor = flattenInOrder(node.left, successor);
+        node.left = null;
+        return successor;
+    }
+
+    public void inOrderMorrisTraversal() {
+        Node curr = root;
+        Node prev = null;
+        while (curr != null) {
+            if (curr.left == null) {
+                System.out.print(curr.value + "->");
+                curr = curr.right;
+            } else {
+                prev = curr.left;
+                while (prev.right != null && prev.right != curr) {
+                    prev = prev.right;
+                }
+                if (prev.right == null) {
+                    prev.right = curr;
+                    curr = curr.left;
+                } else {  // going back up
+                    System.out.print(curr.value + "->");
+                    prev.right = null;
+                    curr = curr.right;
+                }
+            }
+        }
+        System.out.println("END");
+    }
+
     // display method for displaying the height of each node as well.
     /*private void display(Node node, int level) {
         if (node == null) {
@@ -191,11 +263,15 @@ class Main {
 //        bst.insert(6);
 //        bst.insert(4);
         bst.display();
-        System.out.println("Is balanced : " + bst.isBalanced());
+        System.out.println("----------------------------------------");
+        bst.flattenInOrder();
 
-        bst.preOrderTraversal();
-        bst.inOrderTraversal();
-        bst.postOrderTraversal();
+//        bst.inOrderMorrisTraversal();
+//        System.out.println("Is balanced : " + bst.isBalanced());
+//
+//        bst.preOrderTraversal();
+//        bst.inOrderTraversal();
+//        bst.postOrderTraversal();
 
 //        BST bst1 = new BST();
 //        int[] input = new int[]{20, 10, 30, 5, 4, 6, 15, 25, 35, 14, 16, 24, 26, 34, 36};

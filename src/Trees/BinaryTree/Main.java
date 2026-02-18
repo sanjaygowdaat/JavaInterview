@@ -5,5 +5,6 @@ public class Main {
         CustomBinaryTree bt = new CustomBinaryTree();
         bt.populate();
         bt.display1();
+        bt.displayBFS();
     }
 }

@@ -1,5 +1,8 @@
 package Trees.BinaryTree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class CustomBinaryTree {
@@ -31,6 +34,26 @@ public class CustomBinaryTree {
             node.right = new Node(scan.nextInt());
             populate(node.right, scan);
         }
+    }
+
+    public void displayBFS() {
+        Queue<Node> list = new LinkedList<>();
+        displayBFS(root, list);
+        System.out.println("End");
+    }
+
+    private void displayBFS(Node node, Queue<Node> list) {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.value + "->");
+        if (node.left != null) {
+            list.add(node.left);
+        }
+        if (node.right != null) {
+            list.add(node.right);
+        }
+        displayBFS(list.poll(), list);
     }
 
     public void display() {
